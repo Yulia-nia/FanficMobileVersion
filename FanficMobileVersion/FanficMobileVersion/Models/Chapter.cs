@@ -12,6 +12,6 @@ namespace FanficMobileVersion.Models
         public DateTime createdAt { get; set; }
         public DateTime updatedAt { get; set; }
         public int fanficId { get; set; }
-        public IEnumerable<Like> likes { get; set; }
+        // public IEnumerable<Like> likes { get; set; }
     }
 }
