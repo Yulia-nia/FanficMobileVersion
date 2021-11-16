@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:FanficMobileVersion.ViewModel" xmlns:model="clr-namespace:FanficMobileVersion.Models"
+             Title="Категории"
+             x:Class="FanficMobileVersion.Views.CategoriesListViewPage">
+    <StackLayout>
+        <ListView x:Name="categoriesList" ItemsSource="{Binding Categories}"
+                  SelectedItem="{Binding SelectedCategorie, Mode=TwoWay}"
+             HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                         <StackLayout >
+                                <Label Text="{Binding id}" FontSize="Medium" />
+                                <Label Text="{Binding name}" FontSize="Medium" 
+                                       />
+                            </StackLayout>
+                    
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout IsVisible="{Binding IsBusy}"
+                    HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="20">
+            <Label Text="Загрузка данных..." TextColor="Gray" HorizontalOptions="Center" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red" >
+            </ActivityIndicator>
+        </StackLayout>
+    </StackLayout>
+
+
+    <!--
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout>
+            <Label Text="{Binding Text}" 
+                   Style="{DynamicResource ListItemTextStyle}" />
+            <Label Text="{Binding Detail}" 
+                   Style="{DynamicResource ListItemDetailTextStyle}"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    </ListView>-->
+  
+</ContentPage>

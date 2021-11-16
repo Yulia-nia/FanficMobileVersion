@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FanficMobileVersion.Repositories
 {
-    internal class CategoryRepository
+    public class CategoryRepository
     {
         const string Url = "https://fanfic-itra.herokuapp.com/api";
 
@@ -55,8 +55,8 @@ namespace FanficMobileVersion.Repositories
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             string _url = Url + $"/categories/{id}/";
             string result = await client.GetStringAsync(_url);
-            const string V = "category\":";
-            string[] subs = result.Split(V, '}');
+            string[] V = new string[] {"category\":"};
+            string[] subs = result.Split(V, StringSplitOptions.None);
             string u = subs[1].Substring(0, subs[1].IndexOf('}')) + "}";
             Category some_cat = JsonSerializer.Deserialize<Category>(u, options);
             return some_cat;

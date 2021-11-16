@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FanficMobileVersion.Models
 {
-    internal class Fanfic
+    public class Fanfic
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -23,6 +23,6 @@ namespace FanficMobileVersion.Models
         public IEnumerable<Chapter> chapters { get; set; }
 
         //public IEnumerable<Favorites> favorites { get; set; }
-        public int? tagId { get; set; }
+        public int tagId { get; set; }
     }
 }

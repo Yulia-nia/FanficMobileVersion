@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FanficMobileVersion.Models
 {
-    internal class Token
+    public class Token
     {
         public int id { get; set; }
         public string refreshToken { get; set; }

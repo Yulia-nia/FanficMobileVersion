@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FanficMobileVersion.Models
 {
-    internal class Profile
+    public class Profile
     {
         public int id { get; set; }
         public string about { get; set; }

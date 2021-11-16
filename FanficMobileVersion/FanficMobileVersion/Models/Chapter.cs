@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FanficMobileVersion.Models
 {
-    internal class Chapter
+    public class Chapter
     {
         public int id { get; set; }
         public string name { get; set; }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FanficMobileVersion.Repositories
 {
-    internal class FanficRepository
+    public class FanficRepository
     {
         const string Url = "https://fanfic-itra.herokuapp.com/api";
 
@@ -81,8 +81,8 @@ namespace FanficMobileVersion.Repositories
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             string _url = Url + $"/fanfics/{id}/";
             string result = await client.GetStringAsync(_url);
-            const string V = "tags\":";
-            string[] subs = result.Split(V, ']');
+            string[] V = new string[] { "tags\":" };
+            string[] subs = result.Split(V, StringSplitOptions.None);
             string u = subs[1].Substring(0, subs[1].IndexOf(']')) + "]";
             IEnumerable<Tag> tags = JsonSerializer.Deserialize<List<Tag>>(u, options);
             foreach (Tag tag in tags)
@@ -98,8 +98,8 @@ namespace FanficMobileVersion.Repositories
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             string _url = Url + $"/fanfics/{id}/";
             string result = await client.GetStringAsync(_url);
-            const string V = "category\":";
-            string[] subs = result.Split(V, '}');
+            string[] V = new string[] { "category\":" };
+            string[] subs = result.Split(V, StringSplitOptions.None);
             string u = subs[1].Substring(0, subs[1].IndexOf('}')) + "}";
             Category c = JsonSerializer.Deserialize<Category>(u, options);
             return c;
@@ -111,8 +111,8 @@ namespace FanficMobileVersion.Repositories
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             string _url = Url + $"/fanfics/{id}/";
             string result = await client.GetStringAsync(_url);
-            const string V = "user\":";
-            string[] subs = result.Split(V, '}');
+            string[] V = new string[] { "user\":" };
+            string[] subs = result.Split(V, StringSplitOptions.None);
             string u = subs[1].Substring(0, subs[1].IndexOf('}')) + "}";
             User c = JsonSerializer.Deserialize<User>(u, options);
             return c.id;
@@ -124,8 +124,8 @@ namespace FanficMobileVersion.Repositories
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             string _url = Url + $"/fanfics/{id}/";
             string result = await client.GetStringAsync(_url);
-            const string V = "user\":";
-            string[] subs = result.Split(V, '}');
+            string[] V = new string[] { "user\":" };
+            string[] subs = result.Split(V, StringSplitOptions.None);
             string u = subs[1].Substring(0, subs[1].IndexOf('}')) + "}";
             User c = JsonSerializer.Deserialize<User>(u, options);
             return c;

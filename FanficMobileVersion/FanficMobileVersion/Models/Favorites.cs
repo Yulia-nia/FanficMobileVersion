@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FanficMobileVersion.Models
 {
-    internal class Favorites
+    public class Favorites
     {
         // user and fanfic
         public int id { get; set; }

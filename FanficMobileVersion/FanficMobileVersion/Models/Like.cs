@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FanficMobileVersion.Models
 {
-    internal class Like
+    public class Like
     {
         public int id { get; set; }
         public DateTime createdAt { get; set; }
