@@ -49,7 +49,7 @@ namespace FanficMobileVersion.ViewModel
         {
             await Shell.Current.GoToAsync(nameof(FanficsListViewPage));
         }
-        public Command<Fanfic> ItemTapped { get; }
+        public Command<Category> ItemTapped { get; }
 
         /*
          * public ICommand CreateCategorieCommand { protected set; get; }
@@ -76,10 +76,11 @@ namespace FanficMobileVersion.ViewModel
         {
             Categories = new ObservableCollection<Category>();
             IsBusy = false;
+
             //CreateCategorieCommand = new Command(CreateCategorie);
             //DeleteCategorieCommand = new Command(DeleteCategorie);
             //SaveCategorieCommand = new Command(SaveCategorie);
-            // ItemTapped = new Command(OnItemSelected);
+            ItemTapped = new Command<Category>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
             BackCommand = new Command(Back);
@@ -122,13 +123,13 @@ namespace FanficMobileVersion.ViewModel
 
     
 
-        //async void OnItemSelected(Category item)
-        //{
-        //    if (item == null)
-        //        return;
-
-        //    // This will push the ItemDetailPage onto the navigation stack
-        //    await Shell.Current.GoToAsync($"{nameof(FanficsListViewPage)}?{nameof(selectedCategorie.id)}={item.id}");
-        //}
+        async void OnItemSelected(Category item)
+        {
+            if (item == null)
+                return;
+            
+            // This will push the ItemDetailPage onto the navigation stack
+            await Shell.Current.GoToAsync($"{nameof(CategoryDetailPage)}?{nameof(CategoryDetail.ItemId)}={item.id}");
+        }
     }
 }

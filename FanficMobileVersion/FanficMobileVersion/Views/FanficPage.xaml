@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FanficMobileVersion.Views.FanficPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="nameEntry" Text="{Binding Path=name}"  />
+            <Label x:Name="companyEntry" Text="{Binding Path=shortDescription}"  />
+            <Button Text="Сохранить" Clicked="SavePhone" />
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

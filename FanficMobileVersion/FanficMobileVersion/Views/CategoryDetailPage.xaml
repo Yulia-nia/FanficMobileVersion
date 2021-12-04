@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FanficMobileVersion.Views.CategoryDetailPage">
+
+
+
+    <StackLayout>
+        <Label x:Name="nameEntry" Text="{Binding Path=name}"  />
+        <Label x:Name="companyEntry" Text="{Binding Path=description}"  />
+
+  
+    <!--Custom View Cells-->
+
+
+        <ListView x:Name="categoriesList" ItemsSource="{Binding Path=fanfics}"
+                  ItemSelected="OnListViewFanficSelected"
+             HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout >
+                        <Label Text="{Binding name}" FontSize="Large" TextColor="Blue"/>
+                        
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+    </StackLayout>
+
+</ContentPage>

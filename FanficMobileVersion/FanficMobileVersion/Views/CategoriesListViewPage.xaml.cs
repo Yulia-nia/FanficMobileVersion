@@ -9,6 +9,7 @@ using FanficMobileVersion.Models;
 using FanficMobileVersion.Services;
 using System.Collections.Generic;
 using FanficMobileVersion.ViewModel;
+using FanficMobileVersion.Repositories;
 
 namespace FanficMobileVersion.Views
 {
@@ -17,6 +18,8 @@ namespace FanficMobileVersion.Views
     {
         //   public List<Category> categories;
         CategoryViewModel viewModel;
+
+        protected internal ObservableCollection<Category> Categories { get; set; }
 
         public CategoriesListViewPage()
         {
@@ -39,6 +42,23 @@ namespace FanficMobileVersion.Views
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
+
+
+        private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            CategoryRepository cr = new CategoryRepository();
+            // Получаем выбранный элемент 
+            Category selectedPhone = args.SelectedItem as Category;
+            Category cat2 = await cr.GetCategorieById(selectedPhone.id);
+            if (selectedPhone != null)
+            {
+                // Снимаем выделение
+                //phonesList.SelectedItem = null;
+                // Переходим на страницу редактирования элемента 
+                await Navigation.PushAsync(new CategoryDetailPage(cat2));
+            }
+        }
+
 
         protected override async void OnAppearing()
         {

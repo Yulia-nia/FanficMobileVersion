@@ -28,9 +28,10 @@ namespace FanficMobileVersion.Repositories
             //result = result.Replace("[", "{").Replace("]", "}");
             result = result.Replace("{\"info\":", "");
             result = result.Replace("},", ",").Replace("}}", "}");
-            IEnumerable<Category> categories_list = JsonSerializer.Deserialize<IEnumerable<Category>>(result, options);
+            IEnumerable<Category> categories_list = JsonSerializer.Deserialize<IEnumerable<Category>>(result);
             return categories_list;
         }
+
 
         // получение названий всех категорий
         public async Task<List<string>> GetAllName()
@@ -39,7 +40,7 @@ namespace FanficMobileVersion.Repositories
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             string _url = Url + "/categories/allNames/";
             string result = await client.GetStringAsync(_url);
-            IEnumerable<Category> categories_list = JsonSerializer.Deserialize<IEnumerable<Category>>(result, options);
+            IEnumerable<Category> categories_list = JsonSerializer.Deserialize<IEnumerable<Category>>(result);
             List<string> categiries_name = new List<string>();
             foreach (Category categories in categories_list)
             {
@@ -58,19 +59,29 @@ namespace FanficMobileVersion.Repositories
             string[] V = new string[] {"category\":"};
             string[] subs = result.Split(V, StringSplitOptions.None);
             string u = subs[1].Substring(0, subs[1].IndexOf('}')) + "}";
-            Category some_cat = JsonSerializer.Deserialize<Category>(u, options);
+            Category some_cat = JsonSerializer.Deserialize<Category>(u);
+
+
+            string _url2 = Url + $"/categories/{some_cat.id}/fanfics/";
+            string result2 = await client.GetStringAsync(_url2);
+
+            some_cat.fanfics = JsonSerializer.Deserialize<List<Fanfic>>(result2);
             return some_cat;
         }
 
         // получение всех фанфиков в категории
-        public async Task<IEnumerable<Fanfic>> GetAllFanficsInCategory(int id)
+        public async Task<List<Fanfic>> GetAllFanficsInCategory(int id)
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            string _url = Url + $"/categories/{id}/fanfics";
+            string _url = Url + $"/categories/{id}/fanfics/";
             string result = await client.GetStringAsync(_url);
-            IEnumerable<Fanfic> fanficsList = JsonSerializer.Deserialize<IEnumerable<Fanfic>>(result, options);
-            return fanficsList;
+
+            //List<Fanfic> fanficsList = JsonSerializer.Deserialize<List<Fanfic>>(result, options);
+            //List<Fanfic> fan = new List<Fanfic>();
+            //fan = JsonSerializer.Deserialize<List<Fanfic>>(result, options);
+            //int u = 0;
+            return JsonSerializer.Deserialize<List<Fanfic>>(result, options);
         }
     }
 }

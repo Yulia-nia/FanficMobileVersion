@@ -3,31 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FanficMobileVersion.Views.FanficsListViewPage">
 
-    <StackLayout>
-        <!--<Button Text="Добавить" Command="{Binding CreateFanficCommand}" IsEnabled="{Binding IsLoaded}" />-->
-        <!-- SelectedItem="{Binding SelectedFanfic, Mode=TwoWay}" -->
-        <ListView x:Name="Fanfics" ItemsSource="{Binding Fanfic}"
-                  HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <ViewCell.View>
-                            <StackLayout>
-                                <Label Text="{Binding id}" FontSize="Medium" />
-                                <Label Text="{Binding Name}" FontSize="Small" />
-                                <Label Text="{Binding shortDescription}" FontSize="Small" />
-                            </StackLayout>
-                        </ViewCell.View>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <StackLayout IsVisible="{Binding IsBusy}"
-                    HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="20">
-            <Label Text="Загрузка данных..." TextColor="Gray" HorizontalOptions="Center" />
-            <ActivityIndicator IsRunning="{Binding IsBusy}" Color="Red" >
-            </ActivityIndicator>
-        </StackLayout>
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Text:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="Description:" FontSize="Medium" />
+        <Label Text="{Binding Description}" FontSize="Small"/>
     </StackLayout>
 
     <!--

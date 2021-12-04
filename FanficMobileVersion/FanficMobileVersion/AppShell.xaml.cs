@@ -11,6 +11,9 @@ namespace FanficMobileVersion
         public AppShell()
         {
             InitializeComponent();
+            Routing.RegisterRoute(nameof(CategoriesListViewPage), typeof(CategoriesListViewPage));
+            Routing.RegisterRoute(nameof(CategoryDetailPage), typeof(CategoryDetailPage));
+            Routing.RegisterRoute(nameof(FanficPage), typeof(FanficPage));
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
         }

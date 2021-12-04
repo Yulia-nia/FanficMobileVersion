@@ -1,5 +1,6 @@
 ﻿using FanficMobileVersion.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -12,6 +13,7 @@ namespace FanficMobileVersion.ViewModels
         private string itemId;
         private string text;
         private string description;
+
         public string Id { get; set; }
 
         public string Text
@@ -47,6 +49,7 @@ namespace FanficMobileVersion.ViewModels
                 Id = item.Id;
                 Text = item.Text;
                 Description = item.Description;
+                
             }
             catch (Exception)
             {
