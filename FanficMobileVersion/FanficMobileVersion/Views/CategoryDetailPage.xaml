@@ -1,32 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FanficMobileVersion.Views.CategoryDetailPage">
-
+             x:Class="FanficMobileVersion.Views.CategoryDetailPage"
+             Title="{Binding Path=name}">
 
 
     <StackLayout>
-        <Label x:Name="nameEntry" Text="{Binding Path=name}"  />
-        <Label x:Name="companyEntry" Text="{Binding Path=description}"  />
+        <Label Text=" " FontSize="5"/>
+        <Label HorizontalTextAlignment="Center" FontSize="20">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Фанфики в категории «" FontAttributes="Bold" FontSize="20"/>
+                    <Span Text="{Binding Path=name}" FontAttributes="Bold"  FontSize="20">
+                    </Span>
+                    <Span Text="»"  FontAttributes="Bold"  FontSize="20"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
 
-  
-    <!--Custom View Cells-->
+        <Label Text="" />
+        <!--Custom View Cells-->
 
 
         <ListView x:Name="categoriesList" ItemsSource="{Binding Path=fanfics}"
                   ItemSelected="OnListViewFanficSelected"
-             HasUnevenRows="True">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <StackLayout >
-                        <Label Text="{Binding name}" FontSize="Large" TextColor="Blue"/>
-                        
-                    </StackLayout>
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout >
+                            <Label Text="{Binding name}" FontSize="Large" TextColor="Blue"/>
+
+
+                            <Label  x:Name="nameEntry" LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Размер: " FontAttributes="Bold" FontSize="Medium"/>
+                                        <Span Text="{Binding countChapters}" FontSize="Medium" >
+                                        </Span>
+                                        <Span Text=" главы"  FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Понравилось: " FontAttributes="Bold" FontSize="Medium"/>
+                                        <Span Text="{Binding countLikes}" FontSize="Medium" />
+                                        <Span Text=" пользователям"  FontSize="Medium"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label Text="{Binding createdAt}" FontSize="Small" TextColor="Blue"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>

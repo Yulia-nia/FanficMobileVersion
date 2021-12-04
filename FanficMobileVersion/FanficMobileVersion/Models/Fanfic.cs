@@ -12,11 +12,14 @@ namespace FanficMobileVersion.Models
         public int countLikes { get; set; }
         public int countComments { get; set; }
         public int countChapters { get; set; }
-        //public DateTime createdAt { get; set; }
+        public string createdAt { get; set; }
         public DateTime updatedAt { get; set; }
         
         public int userId { get; set; }
+        
+        public string UserName { get; set; }
         public int categoryId { get; set; }
+        public Category category { get; set; }
 
         public IEnumerable<Comment> comments { get; set; }
         public IEnumerable<Tag> tags { get; set; }

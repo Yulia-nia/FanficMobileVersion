@@ -19,6 +19,8 @@ namespace FanficMobileVersion.Views
         //   public List<Category> categories;
         CategoryViewModel viewModel;
 
+        //ListView categoriesList;
+
         protected internal ObservableCollection<Category> Categories { get; set; }
 
         public CategoriesListViewPage()
@@ -27,6 +29,8 @@ namespace FanficMobileVersion.Views
 
             viewModel = new CategoryViewModel() { Navigation = this.Navigation };
             BindingContext = viewModel;
+            
+            
             //List<Category> categories = _category.AllCategories();
 
             //MyListView.ItemsSource = categories;
@@ -50,13 +54,15 @@ namespace FanficMobileVersion.Views
             // Получаем выбранный элемент 
             Category selectedPhone = args.SelectedItem as Category;
             Category cat2 = await cr.GetCategorieById(selectedPhone.id);
+            
             if (selectedPhone != null)
             {
                 // Снимаем выделение
-                //phonesList.SelectedItem = null;
-                // Переходим на страницу редактирования элемента 
+                //catList.SelectedItem = null;
                 await Navigation.PushAsync(new CategoryDetailPage(cat2));
+                // Переходим на страницу редактирования элемента                 
             }
+            
         }
 
 

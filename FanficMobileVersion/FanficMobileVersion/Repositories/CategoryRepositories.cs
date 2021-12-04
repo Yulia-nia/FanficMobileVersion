@@ -62,6 +62,7 @@ namespace FanficMobileVersion.Repositories
             Category some_cat = JsonSerializer.Deserialize<Category>(u);
 
 
+
             string _url2 = Url + $"/categories/{some_cat.id}/fanfics/";
             string result2 = await client.GetStringAsync(_url2);
 

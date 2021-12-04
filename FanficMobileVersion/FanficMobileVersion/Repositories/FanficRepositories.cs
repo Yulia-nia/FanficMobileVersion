@@ -26,6 +26,16 @@ namespace FanficMobileVersion.Repositories
             string _url = Url + $"/fanfics/{id}/info/";
             string result = await client.GetStringAsync(_url);
             Fanfic fanfic = JsonSerializer.Deserialize<Fanfic>(result, options);
+            User user = await GetUserFanfic(id);
+            fanfic.UserName = user.username;
+
+            fanfic.tags = await GetTegs(id);
+
+            //Category cat = await GetCategory(id);
+            fanfic.category = await GetCategory(id);
+
+            fanfic.chapters = await GetAllChaptersInFanfic(id);
+
             return fanfic;
         }
 
@@ -45,6 +55,24 @@ namespace FanficMobileVersion.Repositories
 
             return chaptersList;
         }
+
+
+        public async Task<Chapter> GetChapter(int id)
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            string _url = Url + $"/chapters/{id}/";
+            string result = await client.GetStringAsync(_url);
+            string[] V = new string[] { "info\":" };
+            string[] subs = result.Split(V, StringSplitOptions.None);
+            string u = subs[1].Substring(0, subs[1].IndexOf('}')) + "}";
+            //string result = await client.GetStringAsync(_url);
+            Chapter chaptersList = JsonSerializer.Deserialize<Chapter>(u, options);
+            return chaptersList;
+        }
+
+
+
 
         // получить комменты фанфика (по id) с userId
         public async Task<List<Comment>> GetAllCommentsInFanfic(int id)

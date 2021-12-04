@@ -1,12 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FanficMobileVersion.Views.FanficPage">
+             x:Class="FanficMobileVersion.Views.FanficPage"
+             Title="{Binding Path=name}">
     <ContentPage.Content>
         <StackLayout>
-            <Label x:Name="nameEntry" Text="{Binding Path=name}"  />
+
+            <Button Text="Назад" Clicked="SavePhone" />
+
+            <Label x:Name="nameEntry" Text="{Binding Path=name}" FontSize="Large"/>
+
+            <Label x:Name="categoryName" Text="{Binding Path=category.name}" FontSize="Small"/>
+
+            <Label  x:Name="nameEntry11" LineBreakMode="WordWrap">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Автор: " FontAttributes="Bold" FontSize="Medium"/>
+                        <Span x:Name="nameauther" Text="{Binding Path=UserName}" FontSize="Medium" >
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <Label Text="Описание" FontSize="Large"/>
+            
             <Label x:Name="companyEntry" Text="{Binding Path=shortDescription}"  />
-            <Button Text="Сохранить" Clicked="SavePhone" />
+
+            <Label Text="Метки" FontSize="Large"/>
+            
+            <StackLayout WidthRequest="200" HorizontalOptions="Start">
+                
+                <ListView x:Name="tagssList" ItemsSource="{Binding Path=tags}" 
+                      ItemTapped="tagssList_ItemTappedAsync">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout HorizontalOptions="Center" WidthRequest="200" HeightRequest="40" BackgroundColor="LightGray" Padding="10">
+                                    <Label FontSize="Medium" Text="{Binding name}" VerticalTextAlignment="Center"
+                                       HorizontalTextAlignment="Center"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </StackLayout>
+
+
+            <FlexLayout Direction="Row" Padding="2" Margin="2">
+                
+                <StackLayout WidthRequest="130" HeightRequest="70" BackgroundColor="Aqua" Margin="4">
+                    <Label Text="{Binding Path=countLikes}" HeightRequest="35" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="Нравится"  HeightRequest="35" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+                </StackLayout>
+
+                <StackLayout WidthRequest="130" HeightRequest="70" BackgroundColor="Aqua" Margin="4">
+                    <Label Text="{Binding Path=countComments}"  HeightRequest="35" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Label Text="Комментарии" HeightRequest="35" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+                </StackLayout>
+
+                <StackLayout WidthRequest="130" HeightRequest="70" BackgroundColor="Aqua" Margin="4">
+                    <Label Text="Добавить в избранное"  HeightRequest="70" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>                  
+                </StackLayout>            
+                
+            </FlexLayout>
+            
+            
+            <Label Text="Содержание" FontSize="Large"/>
+            <ListView x:Name="categoriesList" ItemsSource="{Binding Path=chapters}"  
+                      ItemSelected="categoriesList_ItemSelected"
+                  HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout >
+                                <Label Text="{Binding name}" FontSize="Large" TextColor="Blue"/>
+                                <Label Text="{Binding createdAt}" FontSize="Small"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
         </StackLayout>
 
     </ContentPage.Content>

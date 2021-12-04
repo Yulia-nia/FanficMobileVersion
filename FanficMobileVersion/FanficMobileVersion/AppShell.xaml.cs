@@ -14,6 +14,7 @@ namespace FanficMobileVersion
             Routing.RegisterRoute(nameof(CategoriesListViewPage), typeof(CategoriesListViewPage));
             Routing.RegisterRoute(nameof(CategoryDetailPage), typeof(CategoryDetailPage));
             Routing.RegisterRoute(nameof(FanficPage), typeof(FanficPage));
+            Routing.RegisterRoute(nameof(ChapterPage), typeof(ChapterPage));
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
         }
