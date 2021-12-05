@@ -9,8 +9,8 @@
     <ContentPage.Content>
         <StackLayout Margin="20" Orientation="Vertical" VerticalOptions="CenterAndExpand">
             <!-- Place new controls here -->
-            <Entry x:Name="MyUserName" Placeholder="UserName"/>
-            <Entry x:Name="MyUserPassword" Placeholder="Password"/>
+            <Entry x:Name="MyUserName" Placeholder="UserName" Keyboard="Text"/>
+            <Entry x:Name="MyUserPassword" Placeholder="Password" IsPassword="True"/>
             <Button Text="Login" Clicked="Button_Clicked" BackgroundColor="Black" TextColor="White" Margin="30"/>
         </StackLayout>
     </ContentPage.Content>

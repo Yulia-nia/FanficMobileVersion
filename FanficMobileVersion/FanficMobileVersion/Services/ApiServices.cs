@@ -51,7 +51,10 @@ namespace FanficMobileVersion.Services
 
                 //var response = await client.PostAsync("auth/login/", content);
                 var response = await client.PostAsync("auth/login/", content);
-
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
                 //using (var stream = await response.Content.ReadAsStreamAsync())
                 var stream = await response.Content.ReadAsStringAsync();
 

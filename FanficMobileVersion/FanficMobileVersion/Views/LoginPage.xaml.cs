@@ -23,18 +23,24 @@ namespace FanficMobileVersion.Views
 
         public async void Button_Clicked(System.Object sender, System.EventArgs e)
         {
-
-            var content = await ApiServices.ServiceClientInstance.AuthenticateUserAsync(MyUserName.Text, MyUserPassword.Text);
-
-            if (!string.IsNullOrEmpty(content.accessToken))
+            if (MyUserName.Text == null || MyUserPassword.Text == null)
             {
-                await Navigation.PushAsync(new DashboardPage(content));
-
+                await DisplayAlert("Error", "Login or password is null", "Ok");
             }
             else
             {
-                await DisplayAlert("Alert", "Something Went Worng", "Ok");
+                var content = await ApiServices.ServiceClientInstance.AuthenticateUserAsync(MyUserName.Text, MyUserPassword.Text);
 
+                if (!string.IsNullOrEmpty(content.accessToken))
+                {
+                    await Navigation.PushAsync(new DashboardPage(content));
+
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Invalid Login, try again", "Ok");
+
+                }
             }
 
         }
