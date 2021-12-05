@@ -14,9 +14,9 @@ namespace FanficMobileVersion
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            DependencyService.Register<CategoryService>();
+            //DependencyService.Register<CategoryService>();
             DependencyService.Register<ApiServices>();
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new LoginPage());//new AppShell();
         }
 
         protected override void OnStart()

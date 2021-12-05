@@ -1,4 +1,5 @@
 ﻿using FanficMobileVersion.Models;
+using FanficMobileVersion.Models.Login;
 using FanficMobileVersion.Repositories;
 using FanficMobileVersion.ViewModel;
 using System;
@@ -17,10 +18,12 @@ namespace FanficMobileVersion.Views
     public partial class CategoryDetailPage : ContentPage
     {
 
+        LoginApiResponseModel _Login { get; set; }
+        bool edited1 = true; // флаг редактирования
 
         bool edited = true; // флаг редактирования
         public Category Category { get; set; }
-        public CategoryDetailPage(Category category)
+        public CategoryDetailPage(Category category, LoginApiResponseModel login)
         {
             InitializeComponent();
 
@@ -31,6 +34,16 @@ namespace FanficMobileVersion.Views
                 Category = new Category();
                 edited = false;
             }
+
+
+            _Login = login;
+
+            if (login == null)
+            {
+                _Login = new LoginApiResponseModel();
+                edited1 = false;
+            }
+
             this.BindingContext = Category;
         }
 
@@ -46,7 +59,7 @@ namespace FanficMobileVersion.Views
                 // Снимаем выделение
                 //phonesList.SelectedItem = null;
                 // Переходим на страницу редактирования элемента 
-                await Navigation.PushAsync(new FanficPage(cat2));
+                await Navigation.PushAsync(new FanficPage(cat2, _Login));
             }
         }
 

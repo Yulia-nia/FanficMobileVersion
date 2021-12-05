@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FanficMobileVersion.Views.AboutPage"
-             xmlns:vm="clr-namespace:FanficMobileVersion.ViewModels"
-            >
-
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             
+             x:Class="FanficMobileVersion.Views.Profile.FavoritePage">
     <ContentPage.Content>
         <StackLayout>
-            <!--<Button Text="ddd" Clicked="Button_Clicked"/>-->
+            <Button Text="ddd" Clicked="Button_Clicked"/>
 
-            <ListView x:Name="catList"  ItemsSource="{Binding Categories}" 
-                  HasUnevenRows="True">
-                <ListView.ItemTemplate>
+            <ListView x:Name="catList" ItemsSource="{Binding Categories}"
+                  HasUnevenRows="True"> 
+
+                                <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding info.name}" FontSize="Large" TextColor="Blue"/>
+                                            <ViewCell.View>
+                                                <StackLayout >
+                                <Label Text="{Binding Path=info.name}" FontSize="Large" TextColor="Blue"/>
 
 
                                 <Label  x:Name="nameEntry" LineBreakMode="WordWrap">
@@ -41,11 +41,11 @@
 
                                 <Label Text="{Binding info.createdAt}" FontSize="Small" TextColor="Blue"/>
                             </StackLayout>
+                         </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-
 </ContentPage>

@@ -33,7 +33,8 @@ namespace FanficMobileVersion.Views
 
                 if (!string.IsNullOrEmpty(content.accessToken))
                 {
-                    await Navigation.PushAsync(new DashboardPage(content));
+                    Application.Current.MainPage = new AppShell(content);
+                    //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");  //Navigation.PushAsync(new AboutPage());
 
                 }
                 else

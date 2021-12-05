@@ -1,4 +1,5 @@
 ﻿using FanficMobileVersion.Models;
+using FanficMobileVersion.Models.Login;
 using FanficMobileVersion.Repositories;
 using System;
 using System.Collections.Generic;
@@ -18,11 +19,13 @@ namespace FanficMobileVersion.Views
         //Label nameauther;
         public List<string> Tags;
 
-        
+        LoginApiResponseModel _Login { get; set; }
+        bool edited1 = true; // флаг редактирования
+
 
         bool edited = true; // флаг редактирования
         public Fanfic _Fanfic { get; set; }
-        public FanficPage(Fanfic fanfic)
+        public FanficPage(Fanfic fanfic, LoginApiResponseModel login)
         {
             InitializeComponent();
             _Fanfic = fanfic;
@@ -32,10 +35,16 @@ namespace FanficMobileVersion.Views
                 _Fanfic = new Fanfic();
                 edited = false;
             }
-            
-           
-            
-           
+
+            _Login = login;
+
+            if (login == null)
+            {
+                _Login = new LoginApiResponseModel();
+                edited1 = false;
+            }
+
+
             this.BindingContext = _Fanfic;
 
         }
@@ -44,6 +53,17 @@ namespace FanficMobileVersion.Views
         {
             await Shell.Current.GoToAsync($"//{nameof(CategoriesListViewPage)}");
             //await Navigation.PushAsync(new LoginPage());
+        }
+
+        async void GoToComment(object sender, EventArgs e)
+        {
+            //await Shell.Current.GoToAsync($"//{nameof(CommentPage)}", _Login);
+            //await Navigation.PushAsync(new LoginPage());
+
+
+            FanficRepository fr = new FanficRepository();
+            Fanfic fanfic = await fr.GetFanfic(_Fanfic.id);
+            await Navigation.PushModalAsync(new CommentPage(_Login, fanfic));
         }
 
         private async void tagssList_ItemTappedAsync(object sender, ItemTappedEventArgs e)

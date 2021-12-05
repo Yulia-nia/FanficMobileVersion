@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Button Text="Назад" Clicked="SavePhone" />
+            <!--<Button Text="Назад" Clicked="SavePhone" />-->
 
             <Label x:Name="nameEntry" Text="{Binding Path=name}" FontSize="Large"/>
 
@@ -57,7 +57,8 @@
                 </StackLayout>
 
                 <StackLayout WidthRequest="130" HeightRequest="70" BackgroundColor="Aqua" Margin="4">
-                    <Label Text="{Binding Path=countComments}"  HeightRequest="35" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <Button Text="{Binding Path=countComments}"  HeightRequest="35" Clicked="GoToComment"
+                            />
                     <Label Text="Комментарии" HeightRequest="35" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
                 </StackLayout>
 

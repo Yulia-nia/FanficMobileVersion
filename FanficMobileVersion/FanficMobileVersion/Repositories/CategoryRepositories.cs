@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace FanficMobileVersion.Repositories
 {
@@ -23,6 +24,14 @@ namespace FanficMobileVersion.Repositories
         {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            
+            //---
+            var accessToken = await SecureStorage.GetAsync("accessToken");
+
+            client.DefaultRequestHeaders.Authorization =
+                new AuthenticationHeaderValue("Bearer", accessToken);
+            //---
+
             string _url = Url + "/categories/all/";
             string result = await client.GetStringAsync(_url);
             //result = result.Replace("[", "{").Replace("]", "}");

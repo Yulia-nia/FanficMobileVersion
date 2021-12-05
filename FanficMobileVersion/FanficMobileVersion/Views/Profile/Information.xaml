@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FanficMobileVersion.Views.Profile.Information">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Имя"/>
+            <Label Text="{Binding Path=user.username}"/>
+
+            <Label Text=" " FontSize="2"/>
+
+            <Label Text="О себе"/>
+            <Label Text="{Binding Path=user.about}"/>
+
+            <Label Text=" " FontSize="2"/>
+
+            <Label Text="Контактная информация:"/>
+            <Label Text="Email:"/>
+            <Label Text="{Binding Path=user.email}"/>
+
+            <Label Text=" " FontSize="2"/>
+
+            <Label Text="Дата регистрации:"/>
+            <Label Text="{Binding Path=user.createdAt}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

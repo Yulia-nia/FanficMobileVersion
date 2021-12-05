@@ -36,6 +36,8 @@ namespace FanficMobileVersion.Repositories
 
             fanfic.chapters = await GetAllChaptersInFanfic(id);
 
+            fanfic.comments = await GetAllCommentsInFanfic(id);
+
             return fanfic;
         }
 
@@ -98,6 +100,7 @@ namespace FanficMobileVersion.Repositories
             for (int i = 0; i < comments.Count; i++)
             {
                 comments[i].userId = user[i].id;
+                comments[i].UserName = user[i].username;
             }
             return comments;
         }

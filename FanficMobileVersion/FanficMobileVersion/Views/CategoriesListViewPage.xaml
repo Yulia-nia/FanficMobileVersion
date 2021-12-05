@@ -4,7 +4,7 @@
              Title="Категории"
              x:Class="FanficMobileVersion.Views.CategoriesListViewPage">
     <StackLayout>
-        <ListView x:Name="catList" ItemsSource="{Binding Categories}"                  
+        <ListView x:Name="catList" ItemsSource="{Binding Categories}"  
                   ItemSelected="OnListViewItemSelected"           
                   
              HasUnevenRows="True">

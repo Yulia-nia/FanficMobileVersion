@@ -9,9 +9,10 @@ using Xamarin.Forms.Xaml;
 using FanficMobileVersion.ViewModel;
 using System.Collections.ObjectModel;
 
-namespace FanficMobileVersion.Views
+namespace FanficMobileVersion.Views.Profile
 {
-    public partial class AboutPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FavoritePage : ContentPage
     {
         FavoriteViewModel viewModel;
 
@@ -21,14 +22,12 @@ namespace FanficMobileVersion.Views
 
         protected internal ObservableCollection<FavoriteFan> Fan { get; set; }
 
-
-
         //public List<FavoriteFan> Fan { get; set; }
 
         //LoginApiResponseModel Content { get; set; }
         //bool edited = true; // флаг редактирования
 
-        public AboutPage(LoginApiResponseModel content)
+        public FavoritePage(LoginApiResponseModel content)
         {
             InitializeComponent();
 
@@ -42,22 +41,7 @@ namespace FanficMobileVersion.Views
                 _Content = new LoginApiResponseModel();
                 edited = false;
             }
-
-
-            //Content = content;
-
-            //if (content == null)
-            //{
-            //    Content = new LoginApiResponseModel();
-            //    edited = false;
-            //}
-
-            //GetFavorites(content.accessToken, content.user.id);
-            //catList.ItemsSource = (List<FavoriteFan>)Fan;
-            ////this.BindingContext = this;
-            ////this.BindingContext = Fan;
         }
-
 
         protected override async void OnAppearing()
         {
@@ -65,11 +49,9 @@ namespace FanficMobileVersion.Views
             base.OnAppearing();
         }
 
-        //public async void GetFavorites(string s, int id)
-        //{
-        //    ProfileService p = new ProfileService();
-        //    Fan = (List<FavoriteFan>)await p.GetFanList(s, id);
-        //    int i = 0;
-        //}
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            //GetFavorites(Content.accessToken, Content.user.id);
+        }
     }
-    }
+}

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FanficMobileVersion.Views.CommentPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Комментарии" FontSize="Large"/>
+
+            <Entry x:Name="CommentMy" Placeholder="Comment" Keyboard="Text"/>
+            <Button Text="Add comment" Clicked="Button_Clicked"/>
+            <ListView x:Name="categoriesList" ItemsSource="{Binding Path=comments}"                       
+                  HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout >
+                                <Label Text="{Binding text}" FontSize="Large" TextColor="Blue"/>
+                                <Label Text="{Binding UserName}" FontSize="Small"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+           
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

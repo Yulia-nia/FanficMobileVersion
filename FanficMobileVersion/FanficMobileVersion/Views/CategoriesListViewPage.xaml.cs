@@ -10,6 +10,7 @@ using FanficMobileVersion.Services;
 using System.Collections.Generic;
 using FanficMobileVersion.ViewModel;
 using FanficMobileVersion.Repositories;
+using FanficMobileVersion.Models.Login;
 
 namespace FanficMobileVersion.Views
 {
@@ -20,17 +21,27 @@ namespace FanficMobileVersion.Views
         CategoryViewModel viewModel;
 
         //ListView categoriesList;
+        LoginApiResponseModel _Content { get; set; }
+        bool edited = true; // флаг редактирования
 
         protected internal ObservableCollection<Category> Categories { get; set; }
 
-        public CategoriesListViewPage()
+        public CategoriesListViewPage(LoginApiResponseModel content)
         {
             InitializeComponent();
 
             viewModel = new CategoryViewModel() { Navigation = this.Navigation };
             BindingContext = viewModel;
             
-            
+            _Content = content;
+
+            if (content == null)
+            {
+                _Content = new LoginApiResponseModel();
+                edited = false;
+            }
+
+
             //List<Category> categories = _category.AllCategories();
 
             //MyListView.ItemsSource = categories;
@@ -59,7 +70,7 @@ namespace FanficMobileVersion.Views
             {
                 // Снимаем выделение
                 //catList.SelectedItem = null;
-                await Navigation.PushAsync(new CategoryDetailPage(cat2));
+                await Navigation.PushAsync(new CategoryDetailPage(cat2, _Content));
                 // Переходим на страницу редактирования элемента                 
             }
             
