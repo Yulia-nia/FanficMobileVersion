@@ -15,6 +15,7 @@ namespace FanficMobileVersion
 
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<CategoryService>();
+            DependencyService.Register<ApiServices>();
             MainPage = new AppShell();
         }
 

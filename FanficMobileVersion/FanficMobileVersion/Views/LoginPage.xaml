@@ -7,8 +7,11 @@
              x:Class="FanficMobileVersion.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+        <StackLayout Margin="20" Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            <!-- Place new controls here -->
+            <Entry x:Name="MyUserName" Placeholder="UserName"/>
+            <Entry x:Name="MyUserPassword" Placeholder="Password"/>
+            <Button Text="Login" Clicked="Button_Clicked" BackgroundColor="Black" TextColor="White" Margin="30"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
