@@ -5,6 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <ListView x:Name="catList" ItemsSource="{Binding Categories}"
+                        ItemSelected="OnListViewFanficSelected"
                   HasUnevenRows="True">
 
                 <ListView.ItemTemplate>

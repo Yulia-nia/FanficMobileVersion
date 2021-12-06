@@ -1,4 +1,6 @@
 ﻿using FanficMobileVersion.Models;
+using FanficMobileVersion.Models.Login;
+using FanficMobileVersion.Repositories;
 using FanficMobileVersion.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -20,7 +22,9 @@ namespace FanficMobileVersion.Views.UserProfile
         protected internal ObservableCollection<FavoriteFan> Fan { get; set; }
         User User { get; set; }
         bool edited = true; // флаг редактирования
-        public LikedPageUser(User user)
+        LoginApiResponseModel _Login { get; set; }
+        bool edited2 = true; // флаг редактирования
+        public LikedPageUser(User user, LoginApiResponseModel content)
         {
             InitializeComponent();
 
@@ -35,7 +39,13 @@ namespace FanficMobileVersion.Views.UserProfile
                 edited = false;
             }
 
+            _Login = content;
 
+            if (content == null)
+            {
+                _Login = new LoginApiResponseModel();
+                edited2 = false;
+            }
 
             //this.BindingContext = User;
         }
@@ -46,6 +56,20 @@ namespace FanficMobileVersion.Views.UserProfile
             base.OnAppearing();
         }
 
+        private async void OnListViewFanficSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            FanficRepository fr = new FanficRepository();
+            // Получаем выбранный элемент 
+            FavoriteFan selectedPhone = args.SelectedItem as FavoriteFan;
+            Fanfic cat2 = await fr.GetFanfic(selectedPhone.info.id);
+            if (selectedPhone != null)
+            {
+                // Снимаем выделение
+                //phonesList.SelectedItem = null;
+                // Переходим на страницу редактирования элемента 
+                await Navigation.PushAsync(new FanficPage(cat2, _Login));
+            }
+        }
 
     }
 }

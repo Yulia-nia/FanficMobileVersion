@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using FanficMobileVersion.ViewModel;
 using System.Collections.ObjectModel;
+using FanficMobileVersion.Repositories;
 
 namespace FanficMobileVersion.Views.Profile
 {
@@ -49,9 +50,24 @@ namespace FanficMobileVersion.Views.Profile
             base.OnAppearing();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        //private void Button_Clicked(object sender, EventArgs e)
+        //{
+        //    //GetFavorites(Content.accessToken, Content.user.id);
+        //}
+
+        private async void catList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            //GetFavorites(Content.accessToken, Content.user.id);
+            FanficRepository fr = new FanficRepository();
+            // Получаем выбранный элемент 
+            FavoriteFan selectedPhone = e.SelectedItem as FavoriteFan;
+            Fanfic cat2 = await fr.GetFanfic(selectedPhone.info.id);
+            if (selectedPhone != null)
+            {
+                // Снимаем выделение
+                //phonesList.SelectedItem = null;
+                // Переходим на страницу редактирования элемента 
+                await Navigation.PushAsync(new FanficPage(cat2, _Content));
+            }
         }
     }
 }

@@ -5,9 +5,10 @@
              x:Class="FanficMobileVersion.Views.Profile.FavoritePage">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="ddd" Clicked="Button_Clicked"/>
+
 
             <ListView x:Name="catList" ItemsSource="{Binding Categories}"
+                      ItemSelected="catList_ItemSelected"
                   HasUnevenRows="True"> 
 
                                 <ListView.ItemTemplate>

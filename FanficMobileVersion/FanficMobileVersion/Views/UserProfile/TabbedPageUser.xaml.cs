@@ -19,8 +19,8 @@ namespace FanficMobileVersion.Views.UserProfile
             InitializeComponent();
             this.Children.Add(new InformationUser(user) { Title = "Home" });
             this.Children.Add(new WorkPageUser(user, content) { Title = "Работы" });
-            this.Children.Add(new LikedPageUser(user) { Title = "Понравившиеся" });
-            this.Children.Add(new FavoritePageUser(user) { Title = "Избранное" });
+            this.Children.Add(new LikedPageUser(user, content) { Title = "Понравившиеся" });
+            this.Children.Add(new FavoritePageUser(user, content) { Title = "Избранное" });
             // this.Children.Add(new WorkPageUser(user) { Title = "Работы" });
         }
     }

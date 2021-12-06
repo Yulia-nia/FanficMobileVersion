@@ -5,6 +5,7 @@
     <ContentPage.Content>
 
         <ListView x:Name="catList" ItemsSource="{Binding Categories}"
+                  ItemSelected="catList_ItemSelected"
                   HasUnevenRows="True">
 
             <ListView.ItemTemplate>

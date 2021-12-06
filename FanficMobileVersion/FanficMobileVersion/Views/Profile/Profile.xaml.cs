@@ -25,7 +25,7 @@ namespace FanficMobileVersion.Views.Profile
             this.Children.Add(new FavoritePage(content) { Title = "Работы" });
             
             this.Children.Add(new WorkPage(content) { Title = "Понравившиеся" });
-            this.Children.Add(new FavoritePageUser(content.user) { Title = "Избранное" });
+            this.Children.Add(new FavoritePageUser(content.user, content) { Title = "Избранное" });
             //this.Children.Add(new WorkPage() { Title = "Избранное" });
         }
 
