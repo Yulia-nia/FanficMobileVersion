@@ -113,6 +113,29 @@ namespace FanficMobileVersion.Services
             }
         }
 
+        public async Task<IEnumerable<FavoriteFan>> AllPopular()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //Change your base address tail part here and post it. 
+                //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+                string _url = "https://fanfic-itra.herokuapp.com/api/" + "fanfics/popular";
+                string result = await client.GetStringAsync(_url);
+                IEnumerable<FavoriteFan> chaptersList = JsonSerializer.Deserialize<IEnumerable<FavoriteFan>>(result, options);
+                foreach (FavoriteFan fan in chaptersList)
+                {
+                    fan.id = fan.info.id;
+                }
+                return chaptersList;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
 
 
 

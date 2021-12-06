@@ -150,6 +150,34 @@ namespace FanficMobileVersion.ViewModel
             initialized = true;
         }
 
+        // Популярная page
+        public async Task PopularFanfic()
+        {
+
+           
+
+            if (initialized == true) return;
+            IsBusy = true;
+
+            foreach (FavoriteFan f in Categories)
+            {
+                Categories.Remove(f);
+            }
+            IEnumerable<FavoriteFan> categories = await _categoryRepository.AllPopular();
+
+            // очищаем список
+            //Friends.Clear();
+            while (Categories.Any())
+                Categories.RemoveAt(Categories.Count - 1);
+
+            // добавляем загруженные данные
+            foreach (FavoriteFan c in categories)
+                Categories.Add(c);
+
+            IsBusy = false;
+            initialized = true;
+        }
+
 
 
         private void Back()
