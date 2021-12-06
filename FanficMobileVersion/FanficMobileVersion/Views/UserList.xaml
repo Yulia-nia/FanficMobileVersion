@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FanficMobileVersion.Views.UserList">
- 
-    
+
+    <StackLayout >
+        <Label Text="Авторы"/>
+
         <ListView x:Name="catList" ItemsSource="{Binding Categories}"  
-             
+             ItemSelected="catList_ItemSelected"
              HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -19,19 +21,19 @@
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Фанфики: " FontAttributes="Bold" FontSize="Medium"/>
-                                    <Span Text="{Binding countFanfics}" FontSize="Medium">
+                                        <Span Text="{Binding countFanfics}" FontSize="Medium">
                                         </Span>
-                                        
+
                                     </FormattedString>
                                 </Label.FormattedText>
-                            </Label>                           
+                            </Label>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-       
-        <!--Custom View Cells-->
+    </StackLayout>
+    <!--Custom View Cells-->
     <!--       ItemSelected="OnListViewItemSelected"           
                 
     <ListView.ItemTemplate>

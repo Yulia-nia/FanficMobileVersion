@@ -36,7 +36,7 @@ namespace FanficMobileVersion.Views.Profile
         {
             InitializeComponent();
 
-            viewModel = new FanficViewModel(content) { Navigation = this.Navigation };
+            viewModel = new FanficViewModel() { Navigation = this.Navigation };
             BindingContext = viewModel;
 
             _Content = content;

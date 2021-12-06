@@ -64,7 +64,7 @@ namespace FanficMobileVersion.ViewModel
             get { return !isBusy; }
         }
 
-        public FavoriteViewModel(LoginApiResponseModel content)
+        public FavoriteViewModel()
         {
             Categories = new ObservableCollection<FavoriteFan>();
             IsBusy = false;
@@ -107,6 +107,50 @@ namespace FanficMobileVersion.ViewModel
             IsBusy = false;
             initialized = true;
         }
+
+
+
+        public async Task GetUserFav(int id)
+        {
+            if (initialized == true) return;
+            IsBusy = true;
+            IEnumerable<FavoriteFan> categories = await _categoryRepository.GetFanListUser(id);
+
+            // очищаем список
+            //Friends.Clear();
+            while (Categories.Any())
+                Categories.RemoveAt(Categories.Count - 1);
+
+            // добавляем загруженные данные
+            foreach (FavoriteFan c in categories)
+                Categories.Add(c);
+
+            IsBusy = false;
+            initialized = true;
+        }
+
+
+        // избранное
+        public async Task FavoriteFanfic(int id)
+        {
+            if (initialized == true) return;
+            IsBusy = true;
+            IEnumerable<FavoriteFan> categories = await _categoryRepository.FavoriteFanficUser(id);
+
+            // очищаем список
+            //Friends.Clear();
+            while (Categories.Any())
+                Categories.RemoveAt(Categories.Count - 1);
+
+            // добавляем загруженные данные
+            foreach (FavoriteFan c in categories)
+                Categories.Add(c);
+
+            IsBusy = false;
+            initialized = true;
+        }
+
+
 
         private void Back()
         {

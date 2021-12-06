@@ -1,4 +1,5 @@
 ﻿using FanficMobileVersion.Models.Login;
+using FanficMobileVersion.Views.UserProfile;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +19,13 @@ namespace FanficMobileVersion.Views.Profile
         public Profile(LoginApiResponseModel content)
         {
             InitializeComponent();
-            this.Children.Add(new FavoritePage(content) { Title = "Избранное" });
-            this.Children.Add(new Information(content) { Title = "Home" });
-            this.Children.Add(new WorkPage(content) { Title = "Работы" });
+
+            this.Children.Add(new Information(content) { Title = "Информация" });
+
+            this.Children.Add(new FavoritePage(content) { Title = "Работы" });
             
+            this.Children.Add(new WorkPage(content) { Title = "Понравившиеся" });
+            this.Children.Add(new FavoritePageUser(content.user) { Title = "Избранное" });
             //this.Children.Add(new WorkPage() { Title = "Избранное" });
         }
 

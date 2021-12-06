@@ -1,6 +1,8 @@
 ﻿using FanficMobileVersion.Models;
 using FanficMobileVersion.Models.Login;
+using FanficMobileVersion.Services;
 using FanficMobileVersion.ViewModel;
+using FanficMobileVersion.Views.UserProfile;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -39,6 +41,24 @@ namespace FanficMobileVersion.Views
         {
             await viewModel.GetFriends(_Content);
             base.OnAppearing();
+        }
+
+        private async void catList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+
+            ProfileService cr = new ProfileService();
+            // Получаем выбранный элемент 
+            User selectedPhone = e.SelectedItem as User;
+
+            User cat2 = await cr.GetUserById(selectedPhone.id);
+
+            if (selectedPhone != null)
+            {
+                // Снимаем выделение
+                //catList.SelectedItem = null;
+                await Navigation.PushAsync(new TabbedPageUser(cat2, _Content));
+                // Переходим на страницу редактирования элемента                 
+            }
         }
     }
 }

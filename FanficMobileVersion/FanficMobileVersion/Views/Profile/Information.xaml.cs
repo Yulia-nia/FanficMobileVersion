@@ -33,6 +33,5 @@ namespace FanficMobileVersion.Views.Profile
             this.BindingContext = Content;
         }
 
-
     }
 }
