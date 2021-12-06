@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FanficMobileVersion.Views.UserList">
+ 
+    
+        <ListView x:Name="catList" ItemsSource="{Binding Categories}"  
+             
+             HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout >
+                            <Label Text="{Binding username}" FontSize="Large" TextColor="Blue"
+                                   
+                                   />
+                            <Label Text="{Binding about}" FontSize="Medium"/>
+                            <Label LineBreakMode="WordWrap">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Фанфики: " FontAttributes="Bold" FontSize="Medium"/>
+                                    <Span Text="{Binding countFanfics}" FontSize="Medium">
+                                        </Span>
+                                        
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>                           
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+       
+        <!--Custom View Cells-->
+    <!--       ItemSelected="OnListViewItemSelected"           
+                
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+          <StackLayout>
+            <Label Text="{Binding Text}" 
+                   Style="{DynamicResource ListItemTextStyle}" />
+            <Label Text="{Binding Detail}" 
+                   Style="{DynamicResource ListItemDetailTextStyle}"/>
+          </StackLayout>
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    -->
+ 
+</ContentPage>

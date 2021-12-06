@@ -1,38 +1,30 @@
-﻿using System;
+﻿using FanficMobileVersion.Models;
+using FanficMobileVersion.Models.Login;
+using FanficMobileVersion.Services;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using System.Linq;
-using System.Threading.Tasks;
-using FanficMobileVersion.Models;
-using FanficMobileVersion.Services;
-using FanficMobileVersion.Views;
-using FanficMobileVersion.ViewModels;
-using System.Runtime.CompilerServices;
-using FanficMobileVersion.Repositories;
 
 namespace FanficMobileVersion.ViewModel
 {
-    public class CategoryViewModel : INotifyPropertyChanged
+    public class UserVieModel
     {
-
         bool initialized = false;       // была ли начальная инициализация
         private bool isBusy;            // идет ли загрузка с сервера
 
         public event PropertyChangedEventHandler PropertyChanged;
         public INavigation Navigation { get; set; }
 
-
-
-
-
         //Category selectedCategorie;   // выбранный друг
-        public ObservableCollection<Category> Categories { get; set; }
+        public ObservableCollection<User> Categories { get; set; }
 
-        CategoryRepository _categoryRepository= new CategoryRepository();
+        ProfileService _categoryRepository = new ProfileService();
 
 
         //CategoryService _categoriesService; // = new CategoryService(_categoryRepository);
@@ -47,9 +39,9 @@ namespace FanficMobileVersion.ViewModel
 
         private async void OnAddItem(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(FanficsListViewPage));
+            //await Shell.Current.GoToAsync(nameof(FanficsListViewPage));
         }
-        public Command<Category> ItemTapped { get; }
+        public Command<User> ItemTapped { get; }
 
         /*
          * public ICommand CreateCategorieCommand { protected set; get; }
@@ -72,15 +64,15 @@ namespace FanficMobileVersion.ViewModel
             get { return !isBusy; }
         }
 
-        public CategoryViewModel()
+        public UserVieModel(LoginApiResponseModel content)
         {
-            Categories = new ObservableCollection<Category>();
+            Categories = new ObservableCollection<User>();
             IsBusy = false;
 
             //CreateCategorieCommand = new Command(CreateCategorie);
             //DeleteCategorieCommand = new Command(DeleteCategorie);
             //SaveCategorieCommand = new Command(SaveCategorie);
-            ItemTapped = new Command<Category>(OnItemSelected);
+            //ItemTapped = new Command<FavoriteFan>(OnItemSelected);
 
             AddItemCommand = new Command(OnAddItem);
             BackCommand = new Command(Back);
@@ -97,11 +89,11 @@ namespace FanficMobileVersion.ViewModel
         /// <summary>
         /// Get from server all categories
         /// </summary>
-        public async Task GetFriends()
+        public async Task GetFriends(LoginApiResponseModel content)
         {
             if (initialized == true) return;
             IsBusy = true;
-            IEnumerable<Category> categories = await _categoryRepository.GetAllCategories();
+            IEnumerable<User> categories = await _categoryRepository.GetAllUsers(content.accessToken);
 
             // очищаем список
             //Friends.Clear();
@@ -109,7 +101,7 @@ namespace FanficMobileVersion.ViewModel
                 Categories.RemoveAt(Categories.Count - 1);
 
             // добавляем загруженные данные
-            foreach (Category c in categories)
+            foreach (User c in categories)
                 Categories.Add(c);
 
             IsBusy = false;
@@ -119,17 +111,6 @@ namespace FanficMobileVersion.ViewModel
         private void Back()
         {
             Navigation.PopAsync();
-        }
-
-    
-
-        async void OnItemSelected(Category item)
-        {
-            if (item == null)
-                return;
-            
-            // This will push the ItemDetailPage onto the navigation stack
-            //await Shell.Current.GoToAsync($"{nameof(CategoryDetailPage)}?{nameof(CategoryDetail.ItemId)}={item.id}");
-        }
+        }     
     }
 }

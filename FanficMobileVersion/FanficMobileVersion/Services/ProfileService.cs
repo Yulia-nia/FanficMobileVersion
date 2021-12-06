@@ -89,7 +89,7 @@ namespace FanficMobileVersion.Services
         }
 
 
-        public async Task<IEnumerable<User>> GetAllUsers(string accessToken, int id)
+        public async Task<IEnumerable<User>> GetAllUsers(string accessToken)
         {
             try
             {
@@ -98,13 +98,10 @@ namespace FanficMobileVersion.Services
                 //Change your base address tail part here and post it. 
                 client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue("Bearer", accessToken);
-                string _url = "https://fanfic-itra.herokuapp.com/api/" + $"authors/{id}/likedFanfics";
+                string _url = "https://fanfic-itra.herokuapp.com/api/" + $"authors/all";
                 string result = await client.GetStringAsync(_url);
-                IEnumerable<FavoriteFan> chaptersList = JsonSerializer.Deserialize<IEnumerable<FavoriteFan>>(result, options);
-                foreach (FavoriteFan fan in chaptersList)
-                {
-                    fan.id = fan.info.id;
-                }
+                IEnumerable<User> chaptersList = JsonSerializer.Deserialize<IEnumerable<User>>(result, options);
+               
                 return chaptersList;
             }
             catch (Exception ex)
