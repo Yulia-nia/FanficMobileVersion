@@ -12,6 +12,7 @@
             <Entry x:Name="MyUserName" Placeholder="UserName" Keyboard="Text"/>
             <Entry x:Name="MyUserPassword" Placeholder="Password" IsPassword="True"/>
             <Button Text="Login" Clicked="Button_Clicked" BackgroundColor="Black" TextColor="White" Margin="30"/>
+            <Button Text="Registration" Clicked="Button_Clicked_1" BackgroundColor="Black" TextColor="White" Margin="30"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

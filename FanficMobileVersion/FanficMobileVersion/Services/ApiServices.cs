@@ -74,5 +74,44 @@ namespace FanficMobileVersion.Services
             }
         }
 
+
+        public async Task<LoginApiResponseModel> RegistrationUserAsync(string username, string password, string email)
+        {
+            try
+            {
+                RegistrationApiRequestModel loginRequestModel = new RegistrationApiRequestModel()
+                {
+                    username = username,
+                    password = password,
+                    email = email
+
+                };
+                var content = new StringContent(JsonConvert.SerializeObject(loginRequestModel), Encoding.UTF8, "application/json");
+                //Change your base address tail part here and post it. 
+                //var response = await client.PostAsync("auth/login/", content);
+                var response = await client.PostAsync("auth/registration/", content);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return null;
+                }
+                //using (var stream = await response.Content.ReadAsStreamAsync())
+                var stream = await response.Content.ReadAsStringAsync();
+
+
+                var jsoncontent = JsonConvert.DeserializeObject<LoginApiResponseModel>(stream);
+
+                int i = 0;
+                response.EnsureSuccessStatusCode();
+                //using (var reader = new StreamReader(stream))
+                //var jsoncontent = _serializer.Deserialize<LoginApiResponseModel>(json);
+                Preferences.Set("accessToken", jsoncontent.accessToken);
+                return jsoncontent;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

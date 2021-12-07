@@ -17,14 +17,12 @@ namespace FanficMobileVersion.Views
     {
 
         //Label nameauther;
-
         //public bool _chek { get; set; }
          
         public List<string> Tags;
 
         LoginApiResponseModel _Login { get; set; }
         bool edited1 = true; // флаг редактирования
-
 
         bool edited = true; // флаг редактирования
         public Fanfic _Fanfic { get; set; }
@@ -49,23 +47,13 @@ namespace FanficMobileVersion.Views
 
             GetChekLike();
             GetChekFavorite();
-            //var b = (Button)LikeButton;
-            //if (_chek == true)
-            //{
-            //    LikeButton.BackgroundColor = Color.Green;
-            //}
-            //else
-            //{
-            //    b.BackgroundColor = Color.Blue;
-            //}
-
+        
             this.BindingContext = _Fanfic;        
         }
 
         async void SavePhone(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"//{nameof(CategoriesListViewPage)}");
-            //await Navigation.PushAsync(new LoginPage());
+            await Shell.Current.GoToAsync($"//{nameof(CategoriesListViewPage)}");            
         }
 
         async void GoToComment(object sender, EventArgs e)
@@ -140,26 +128,7 @@ namespace FanficMobileVersion.Views
 
         }
 
-        //protected override async void OnAppearing()
-        //{
-
-        //    //BindingContext = viewModel;
-        //    LikeService ls = new LikeService();
-        //    _chek = await ls.CheckLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
-        //    //if (_chek == true)
-        //    //{
-        //    //    LikeButton.BackgroundColor = Color.Green;
-        //    //    LikeButton.TextColor = BackgroundColor;
-        //    //}
-        //    //else if (_chek == false)
-        //    //{
-        //    //    LikeButton.BackgroundColor = Color.Blue;
-        //    //    LikeButton.TextColor = BackgroundColor;
-        //    //}
-        //    base.OnAppearing();
-        //}
-
-
+     
         private async void Button_Clicked(object sender, EventArgs e)
         {   
             LikeService ls = new LikeService();
@@ -213,22 +182,6 @@ namespace FanficMobileVersion.Views
                 //LikeButton.TextColor = BackgroundColor;
             }
         }
-
-
-        //private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs args)
-        //{
-        //    CategoryRepository cr = new CategoryRepository();
-        //    // Получаем выбранный элемент 
-        //    Category selectedPhone = args.SelectedItem as Category;
-        //    Category cat2 = await cr.GetCategorieById(selectedPhone.id);
-        //    if (selectedPhone != null)
-        //    {
-        //        // Снимаем выделение
-        //        //phonesList.SelectedItem = null;
-        //        // Переходим на страницу редактирования элемента 
-        //        await Navigation.PushAsync(new CategoryDetailPage(cat2));
-        //    }
-        //}
 
 
     }

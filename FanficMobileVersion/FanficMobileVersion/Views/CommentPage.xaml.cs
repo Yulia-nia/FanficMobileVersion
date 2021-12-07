@@ -1,5 +1,6 @@
 ﻿using FanficMobileVersion.Models;
 using FanficMobileVersion.Models.Login;
+using FanficMobileVersion.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,8 @@ namespace FanficMobileVersion.Views
     public partial class CommentPage : ContentPage
     {
         LoginApiResponseModel _Login { get; set; }
-        bool edited1 = true; // флаг редактирования
-
-        bool edited = true; // флаг редактирования
+        bool edited1 = true;
+        bool edited = true;
         public Fanfic _Fanfic { get; set; }
 
         public CommentPage(LoginApiResponseModel login, Fanfic fanfic)
@@ -48,11 +48,12 @@ namespace FanficMobileVersion.Views
         {
             if (CommentMy.Text == null)
             {
-                await DisplayAlert("Error", "Login or password is null", "Ok");
+                await DisplayAlert("Error", "Entry is null", "Ok");
             }
             else
             {
-
+                CommentService cs = new CommentService();
+                await cs.AddComment(_Login.user.id, _Fanfic.id, CommentMy.Text, _Login.accessToken);
             }
         }
     }

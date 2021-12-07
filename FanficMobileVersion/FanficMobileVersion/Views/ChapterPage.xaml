@@ -9,9 +9,8 @@
             <Button Text="Назад" Clicked="Back" />
 
             <Label Text="{Binding Path=name}"/>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding Path=createdAt}"/>
+            <Label Text="{Binding Path=text}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

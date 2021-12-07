@@ -5,9 +5,10 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Комментарии" FontSize="Large"/>
-
-            <Entry x:Name="CommentMy" Placeholder="Comment" Keyboard="Text"/>
+            <Entry x:Name="CommentMy" Placeholder="Comment" Keyboard="Text"/>    
             <Button Text="Add comment" Clicked="Button_Clicked"/>
+            
+            
             <ListView x:Name="categoriesList" ItemsSource="{Binding Path=comments}"                       
                   HasUnevenRows="True">
                 <ListView.ItemTemplate>
