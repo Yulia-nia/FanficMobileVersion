@@ -5,7 +5,7 @@
              x:Class="FanficMobileVersion.Views.Profile.FavoritePage">
     <ContentPage.Content>
         <StackLayout>
-
+            <Button Text="Update" Clicked="Button_Clicked"/>
 
             <ListView x:Name="catList" ItemsSource="{Binding Categories}"
                       ItemSelected="catList_ItemSelected"

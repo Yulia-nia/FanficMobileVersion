@@ -65,10 +65,18 @@ namespace FanficMobileVersion.Views.Profile
             if (selectedPhone != null)
             {
                 // Снимаем выделение
-                //phonesList.SelectedItem = null;
+                //catList.SelectedItem = null;
                 // Переходим на страницу редактирования элемента 
                 await Navigation.PushAsync(new FanficPage(cat2, _Content));
             }
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            viewModel = new FanficViewModel() { Navigation = this.Navigation };
+            BindingContext = viewModel;
+            await viewModel.GetFriends(_Content);
+            base.OnAppearing();
         }
     }
 }

@@ -4,6 +4,7 @@
              x:Class="FanficMobileVersion.Views.UserProfile.LikedPageUser">
     <ContentPage.Content>
         <StackLayout>
+            <Button Text="Update" Clicked="Button_Clicked"/>
             <ListView x:Name="catList" ItemsSource="{Binding Categories}"
                         ItemSelected="OnListViewFanficSelected"
                   HasUnevenRows="True">

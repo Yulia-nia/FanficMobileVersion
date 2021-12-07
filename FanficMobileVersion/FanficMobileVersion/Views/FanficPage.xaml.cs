@@ -17,6 +17,9 @@ namespace FanficMobileVersion.Views
     {
 
         //Label nameauther;
+
+        //public bool _chek { get; set; }
+         
         public List<string> Tags;
 
         LoginApiResponseModel _Login { get; set; }
@@ -44,9 +47,19 @@ namespace FanficMobileVersion.Views
                 edited1 = false;
             }
 
+            GetChekLike();
+            GetChekFavorite();
+            //var b = (Button)LikeButton;
+            //if (_chek == true)
+            //{
+            //    LikeButton.BackgroundColor = Color.Green;
+            //}
+            //else
+            //{
+            //    b.BackgroundColor = Color.Blue;
+            //}
 
-            this.BindingContext = _Fanfic;
-
+            this.BindingContext = _Fanfic;        
         }
 
         async void SavePhone(object sender, EventArgs e)
@@ -59,8 +72,6 @@ namespace FanficMobileVersion.Views
         {
             //await Shell.Current.GoToAsync($"//{nameof(CommentPage)}", _Login);
             //await Navigation.PushAsync(new LoginPage());
-
-
             FanficRepository fr = new FanficRepository();
             Fanfic fanfic = await fr.GetFanfic(_Fanfic.id);
             await Navigation.PushModalAsync(new CommentPage(_Login, fanfic));
@@ -94,6 +105,113 @@ namespace FanficMobileVersion.Views
                 await Navigation.PushModalAsync(new ChapterPage(cat2, _Fanfic.id));
             }
 
+        }
+
+
+        public async void GetChekLike()
+        {
+            LikeService ls = new LikeService();
+            bool _chek = await ls.CheckLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
+            var b = (Button)LikeButton;
+            if (_chek == true)
+            {
+                LikeButton.BackgroundColor = Color.Green;
+            }
+            else
+            {
+                b.BackgroundColor = Color.Blue;
+            }
+
+        }
+
+        public async void GetChekFavorite()
+        {
+            FavoriteService ls = new FavoriteService();
+            bool _chek = await ls.CheckLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
+            var b = (Button)FavoriteButton;
+            if (_chek == true)
+            {
+                b.BackgroundColor = Color.Orange;
+            }
+            else
+            {
+                b.BackgroundColor = Color.Blue;
+            }
+
+        }
+
+        //protected override async void OnAppearing()
+        //{
+
+        //    //BindingContext = viewModel;
+        //    LikeService ls = new LikeService();
+        //    _chek = await ls.CheckLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
+        //    //if (_chek == true)
+        //    //{
+        //    //    LikeButton.BackgroundColor = Color.Green;
+        //    //    LikeButton.TextColor = BackgroundColor;
+        //    //}
+        //    //else if (_chek == false)
+        //    //{
+        //    //    LikeButton.BackgroundColor = Color.Blue;
+        //    //    LikeButton.TextColor = BackgroundColor;
+        //    //}
+        //    base.OnAppearing();
+        //}
+
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {   
+            LikeService ls = new LikeService();
+            //LikeService ls = new LikeService();
+            var b = (Button)sender;
+            bool _chek = await ls.CheckLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
+            if (_chek == true)
+            {
+                await ls.DeleteLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
+                FanficRepository fp = new FanficRepository();
+                Fanfic fanfic = await fp.GetFanfic(_Fanfic.id);                
+                b.BackgroundColor = Color.Blue;
+                //LikeButton.TextColor = BackgroundColor;
+                this.BindingContext = fanfic;
+
+            }
+            else if (_chek == false)
+            {
+                await ls.AddLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
+                FanficRepository fp = new FanficRepository();
+                Fanfic fanfic = await fp.GetFanfic(_Fanfic.id);
+                b.BackgroundColor = Color.Green;
+                this.BindingContext = fanfic;                
+                //LikeButton.TextColor = BackgroundColor;
+            }            
+        }
+
+        private async void FavoriteButton_Clicked(object sender, EventArgs e)
+        {
+            FavoriteService ls = new FavoriteService();
+            //LikeService ls = new LikeService();
+            var b = (Button)sender;
+            bool _chek = await ls.CheckLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
+            if (_chek == true)
+            {
+                await ls.DeleteLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
+                FanficRepository fp = new FanficRepository();
+                Fanfic fanfic = await fp.GetFanfic(_Fanfic.id);
+                b.BackgroundColor = Color.Blue;
+                //LikeButton.TextColor = BackgroundColor;
+                this.BindingContext = fanfic;
+
+            }
+            else if (_chek == false)
+            {
+                await ls.AddLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
+                FanficRepository fp = new FanficRepository();
+                Fanfic fanfic = await fp.GetFanfic(_Fanfic.id);
+                b.BackgroundColor = Color.Orange;
+                this.BindingContext = fanfic;
+                //LikeButton.TextColor = BackgroundColor;
+            }
         }
 
 

@@ -152,10 +152,7 @@ namespace FanficMobileVersion.ViewModel
 
         // Популярная page
         public async Task PopularFanfic()
-        {
-
-           
-
+        {       
             if (initialized == true) return;
             IsBusy = true;
 
@@ -195,9 +192,5 @@ namespace FanficMobileVersion.ViewModel
             // This will push the ItemDetailPage onto the navigation stack
             //await Shell.Current.GoToAsync($"{nameof(CategoryDetailPage)}?{nameof(CategoryDetail.ItemId)}={item.id}");
         }
-
-
-
-
     }
 }

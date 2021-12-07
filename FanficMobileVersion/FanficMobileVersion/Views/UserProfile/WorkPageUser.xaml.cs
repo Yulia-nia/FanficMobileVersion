@@ -69,5 +69,12 @@ namespace FanficMobileVersion.Views.UserProfile
             }
         }
 
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            viewModel = new FanficViewModel() { Navigation = this.Navigation };
+            BindingContext = viewModel;
+            await viewModel.GetUserWork(User.id);
+            base.OnAppearing();
+        }
     }
 }

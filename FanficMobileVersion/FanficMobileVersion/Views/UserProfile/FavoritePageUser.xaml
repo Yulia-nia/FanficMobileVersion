@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FanficMobileVersion.Views.UserProfile.FavoritePageUser">
     <ContentPage.Content>
-        <StackLayout>
-            <ListView x:Name="catList" ItemsSource="{Binding Categories}"
+        <StackLayout>           
+                <Button Text="Update" Clicked="Button_Clicked"/>
+                <ListView x:Name="catList" ItemsSource="{Binding Categories}"
                         ItemSelected="OnListViewFanficSelected"
                   HasUnevenRows="True">
 

@@ -80,6 +80,7 @@ namespace FanficMobileVersion.Views
         protected override async void OnAppearing()
         {
             await viewModel.GetFriends();
+            //BindingContext = viewModel;
             base.OnAppearing();
         }
     }
