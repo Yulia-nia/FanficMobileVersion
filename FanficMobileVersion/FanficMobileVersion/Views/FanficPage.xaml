@@ -24,13 +24,13 @@
 
 
             <Label Text="Описание" FontSize="Large"/>
-            
+
             <Label x:Name="companyEntry" Text="{Binding Path=shortDescription}"  />
 
             <Label Text="Метки" FontSize="Large"/>
-            
+
             <StackLayout WidthRequest="200" HorizontalOptions="Start">
-                
+
                 <ListView x:Name="tagssList" ItemsSource="{Binding Path=tags}" 
                       ItemTapped="tagssList_ItemTappedAsync">
                     <ListView.ItemTemplate>
@@ -50,7 +50,7 @@
 
 
             <FlexLayout Direction="Row" Padding="2" Margin="2">
-                
+
                 <StackLayout WidthRequest="130" HeightRequest="70" BackgroundColor="Aqua" Margin="4">
                     <Button x:Name="LikeButton" Text="{Binding Path=countLikes}" HeightRequest="35" Clicked="Button_Clicked"/>
                     <Label Text="Нравится"  HeightRequest="35" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
@@ -63,12 +63,12 @@
                 </StackLayout>
 
                 <StackLayout WidthRequest="130" HeightRequest="70" BackgroundColor="Aqua" Margin="4">
-                    <Button x:Name="FavoriteButton" Text="Добавить в избранное"  HeightRequest="70" Clicked="FavoriteButton_Clicked"/>                  
-                </StackLayout>            
-                
+                    <Button x:Name="FavoriteButton" Text="Добавить в избранное"  HeightRequest="70" Clicked="FavoriteButton_Clicked"/>
+                </StackLayout>
+
             </FlexLayout>
-            
-            
+
+
             <Label Text="Содержание" FontSize="Large"/>
             <ListView x:Name="categoriesList" ItemsSource="{Binding Path=chapters}"  
                       ItemSelected="categoriesList_ItemSelected"
@@ -84,7 +84,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
+
         </StackLayout>
 
     </ContentPage.Content>

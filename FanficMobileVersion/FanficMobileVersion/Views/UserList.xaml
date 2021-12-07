@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FanficMobileVersion.Views.UserList">
+             x:Class="FanficMobileVersion.Views.UserList"
+             Title="Авторы">
 
-    <StackLayout >
-        <Label Text="Авторы"/>
+    <StackLayout HorizontalOptions="Center" Padding="5" >
+        <Label Text="Авторы" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"/>
+        <Label Text="Пользователи с работами" FontSize="Medium" FontAttributes="Italic" HorizontalOptions="Center"/>
 
         <ListView x:Name="catList" ItemsSource="{Binding Categories}"  
              ItemSelected="catList_ItemSelected"
@@ -12,7 +14,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout >
+                        <StackLayout Padding="10">
                             <Label Text="{Binding username}" FontSize="Large" TextColor="Blue"
                                    
                                    />
@@ -20,8 +22,8 @@
                             <Label LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Фанфики: " FontAttributes="Bold" FontSize="Medium"/>
-                                        <Span Text="{Binding countFanfics}" FontSize="Medium">
+                                        <Span Text="Фанфики: " FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                                        <Span Text="{Binding countFanfics}" FontSize="Medium" TextColor="Black">
                                         </Span>
 
                                     </FormattedString>

@@ -1,10 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FanficMobileVersion.Views.Profile.WorkPage">
+             x:Class="FanficMobileVersion.Views.Profile.WorkPage"
+             Title="Понравившиеся">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Update" Clicked="Button_Clicked"/>
+
+            <StackLayout Padding="5" VerticalOptions="Center">
+                <Label Text="Понравившиеся фанфики" FontSize="Large" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>                
+            </StackLayout>
+
+            <Button Text="Обновить данные" Clicked="Button_Clicked"/>
+            
+            
+            
             <ListView x:Name="catList" ItemsSource="{Binding Categories}"
                   ItemSelected="catList_ItemSelected"
                   HasUnevenRows="True">
@@ -13,15 +22,15 @@
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
-                                <StackLayout >
+                                <StackLayout Padding="10">
                                     <Label Text="{Binding Path=info.name}" FontSize="Large" TextColor="Blue"/>
 
 
                                     <Label  x:Name="nameEntry" LineBreakMode="WordWrap">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="Размер: " FontAttributes="Bold" FontSize="Medium"/>
-                                                <Span Text="{Binding info.countChapters}" FontSize="Medium" >
+                                                <Span Text="Размер: " FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                                                <Span Text="{Binding info.countChapters}" FontSize="Medium"  >
                                                 </Span>
                                                 <Span Text=" главы"  FontSize="Medium"/>
                                             </FormattedString>
@@ -31,14 +40,14 @@
                                     <Label LineBreakMode="WordWrap">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="Понравилось: " FontAttributes="Bold" FontSize="Medium"/>
+                                                <Span Text="Понравилось: " FontAttributes="Bold" FontSize="Medium"  TextColor="Black"/>
                                                 <Span Text="{Binding info.countLikes}" FontSize="Medium" />
                                                 <Span Text=" пользователям"  FontSize="Medium"/>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
 
-                                    <Label Text="{Binding info.createdAt}" FontSize="Small" TextColor="Blue"/>
+                                    <Label Text="{Binding info.createdAt}" FontSize="Small"/>
                                 </StackLayout>
                             </ViewCell.View>
                         </ViewCell>

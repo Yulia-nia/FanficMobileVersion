@@ -7,13 +7,13 @@
 
     <StackLayout>
         <Label Text=" " FontSize="5"/>
-        <Label HorizontalTextAlignment="Center" FontSize="20">
+        <Label HorizontalTextAlignment="Center" FontSize="20"  >
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Фанфики в категории «" FontAttributes="Bold" FontSize="20"/>
-                    <Span Text="{Binding Path=name}" FontAttributes="Bold"  FontSize="20">
+                    <Span Text="Фанфики в категории «" FontAttributes="Bold" FontSize="20" TextColor="Black"/>
+                    <Span Text="{Binding Path=name}" FontAttributes="Bold"  FontSize="20" TextColor="Black">
                     </Span>
-                    <Span Text="»"  FontAttributes="Bold"  FontSize="20"/>
+                    <Span Text="»"  FontAttributes="Bold"  FontSize="20" TextColor="Black"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
@@ -28,14 +28,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout >
+                        <StackLayout Padding="15">
                             <Label Text="{Binding name}" FontSize="Large" TextColor="Blue"/>
 
 
                             <Label  x:Name="nameEntry" LineBreakMode="WordWrap">
                                 <Label.FormattedText>
                                     <FormattedString>
-                                        <Span Text="Размер: " FontAttributes="Bold" FontSize="Medium"/>
+                                        <Span Text="Размер: " FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
                                         <Span Text="{Binding countChapters}" FontSize="Medium" >
                                         </Span>
                                         <Span Text=" главы"  FontSize="Medium"/>
@@ -43,7 +43,7 @@
                                 </Label.FormattedText>
                             </Label>
 
-                            <Label LineBreakMode="WordWrap">
+                            <Label LineBreakMode="WordWrap" TextColor="Black">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Понравилось: " FontAttributes="Bold" FontSize="Medium"/>
@@ -53,7 +53,7 @@
                                 </Label.FormattedText>
                             </Label>
 
-                            <Label Text="{Binding createdAt}" FontSize="Small" TextColor="Blue"/>
+                            <Label Text="{Binding createdAt}" FontSize="Small"/>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

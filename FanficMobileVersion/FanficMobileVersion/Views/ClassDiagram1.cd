@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FanficMobileVersion.Models.Login.LoginApiRequestModel">
+    <Position X="4.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Login\LoginApiRequestModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Login.LoginApiResponseModel">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQA=</HashCode>
+      <FileName>Models\Login\LoginApiResponseModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Login.RegistrationApiRequestModel">
+    <Position X="1" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Login\RegistrationApiRequestModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Category">
+    <Position X="1" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAIAAAAAAAAAAEAgAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Chapter">
+    <Position X="2.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAACAAgAAAAAAAAEAAAIAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Chapter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Comment">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAACCAgAAAAAAAAAAAAIAQAAAAAAAgA=</HashCode>
+      <FileName>Models\Comment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.CommentFunction">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACCAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Models\CommentFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Fanfic">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAACAAAAIAAJDAgAAAACAAAkAAAAAQBIAAAAQgA=</HashCode>
+      <FileName>Models\Fanfic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.FavoriteFan">
+    <Position X="1" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAAAAAwA=</HashCode>
+      <FileName>Models\FavoriteFan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Info1">
+    <Position X="6.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAIBAAAAAACAAAkAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\FavoriteFan.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Favorites">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAACCAgAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Favorites.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Item">
+    <Position X="8" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Like">
+    <Position X="1" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAACCAgAAAAAAAAAAAAAAAAAAAAAEgA=</HashCode>
+      <FileName>Models\Like.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.LikeFunction">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACCAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\LikeFunction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Profile">
+    <Position X="8" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAIAAACAgBAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Profile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Role">
+    <Position X="2.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAgAAAQAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Tag">
+    <Position X="4.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAACKAgAAAAAAAAEAgAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Tag.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.Token">
+    <Position X="6.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAIAAACAgAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Models\Token.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.User">
+    <Position X="8" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAkgQAIAAAAAIIAgAAABgAFAAAIAAAAAAABAAoAAAgA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FanficMobileVersion.Models.UsersRoles">
+    <Position X="1" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACIAAACAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UsersRoles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

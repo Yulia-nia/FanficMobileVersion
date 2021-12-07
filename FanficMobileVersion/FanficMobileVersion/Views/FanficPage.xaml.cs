@@ -18,7 +18,7 @@ namespace FanficMobileVersion.Views
 
         //Label nameauther;
         //public bool _chek { get; set; }
-         
+
         public List<string> Tags;
 
         LoginApiResponseModel _Login { get; set; }
@@ -47,13 +47,13 @@ namespace FanficMobileVersion.Views
 
             GetChekLike();
             GetChekFavorite();
-        
-            this.BindingContext = _Fanfic;        
+
+            this.BindingContext = _Fanfic;
         }
 
         async void SavePhone(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync($"//{nameof(CategoriesListViewPage)}");            
+            await Shell.Current.GoToAsync($"//{nameof(CategoriesListViewPage)}");
         }
 
         async void GoToComment(object sender, EventArgs e)
@@ -128,9 +128,9 @@ namespace FanficMobileVersion.Views
 
         }
 
-     
+
         private async void Button_Clicked(object sender, EventArgs e)
-        {   
+        {
             LikeService ls = new LikeService();
             //LikeService ls = new LikeService();
             var b = (Button)sender;
@@ -139,7 +139,7 @@ namespace FanficMobileVersion.Views
             {
                 await ls.DeleteLike(_Login.user.id, _Fanfic.id, _Login.accessToken);
                 FanficRepository fp = new FanficRepository();
-                Fanfic fanfic = await fp.GetFanfic(_Fanfic.id);                
+                Fanfic fanfic = await fp.GetFanfic(_Fanfic.id);
                 b.BackgroundColor = Color.Blue;
                 //LikeButton.TextColor = BackgroundColor;
                 this.BindingContext = fanfic;
@@ -151,9 +151,9 @@ namespace FanficMobileVersion.Views
                 FanficRepository fp = new FanficRepository();
                 Fanfic fanfic = await fp.GetFanfic(_Fanfic.id);
                 b.BackgroundColor = Color.Green;
-                this.BindingContext = fanfic;                
+                this.BindingContext = fanfic;
                 //LikeButton.TextColor = BackgroundColor;
-            }            
+            }
         }
 
         private async void FavoriteButton_Clicked(object sender, EventArgs e)

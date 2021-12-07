@@ -25,9 +25,7 @@ namespace FanficMobileVersion
             Routing.RegisterRoute(nameof(UserList), typeof(UserList));
             Routing.RegisterRoute(nameof(PopularPage), typeof(PopularPage));
 
-            //Routing.RegisterRoute(nameof(DashboardPage), typeof(DashboardPage));
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-            Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            
 
 
             _Content = content;
@@ -61,13 +59,6 @@ namespace FanficMobileVersion
             shell_section3.Items.Add(new ShellContent() { Content = new PopularPage(content) });
 
 
-            ShellSection shell_section4 = new ShellSection
-            {
-                Title = "Добавить фанфик -",
-            };
-            shell_section4.Items.Add(new ShellContent() { Content = new ItemsPage() });
-
-
             ShellSection shell_section5 = new ShellSection
             {
                 Title = "Авторы",
@@ -79,7 +70,7 @@ namespace FanficMobileVersion
             myshell.Items.Add(shell_section5);
             myshell.Items.Add(shell_section3);
             myshell.Items.Add(shell_section1);
-            myshell.Items.Add(shell_section4);
+           
 
         }
     

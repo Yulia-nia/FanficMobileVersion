@@ -65,38 +65,4 @@ namespace FanficMobileVersion.Views
 
 
     }
-
-    //public List<Fanfic> Items { get; set; }
-    //CategoryDetail categoryDetail;
-
-
-    //public CategoryDetailPage(int id)
-    //{
-    //    InitializeComponent();
-    //    //categoryDetail = Id;
-    //    BindingContext = new CategoryDetail();
-    //    categoryDetail.GetFriendsF(categoryDetail.Id);
-
-    //    Items = categoryDetail.Fanfics;
-
-    //    MyListView.ItemsSource = Items;
-    //}
-
-    //async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-    //{
-    //    if (e.Item == null)
-    //        return;
-
-    //    await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-
-    //    //Deselect Item
-    //    ((ListView)sender).SelectedItem = null;
-    //}
-
-    //protected override async void OnAppearing()
-    //{
-    //    categoryDetail.GetFriendsF(categoryDetail.Id);
-    //    base.OnAppearing();
-    //}
-    //}
 }

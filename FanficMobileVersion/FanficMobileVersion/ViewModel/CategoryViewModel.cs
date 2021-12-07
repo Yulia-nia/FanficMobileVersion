@@ -47,7 +47,7 @@ namespace FanficMobileVersion.ViewModel
 
         private async void OnAddItem(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(FanficsListViewPage));
+            //await Shell.Current.GoToAsync(nameof(FanficsListViewPage));
         }
         public Command<Category> ItemTapped { get; }
 

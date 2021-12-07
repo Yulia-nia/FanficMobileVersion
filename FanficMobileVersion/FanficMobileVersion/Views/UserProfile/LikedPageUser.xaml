@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FanficMobileVersion.Views.UserProfile.LikedPageUser">
+             x:Class="FanficMobileVersion.Views.UserProfile.LikedPageUser"
+             Title="Понравившиеся">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Update" Clicked="Button_Clicked"/>
+
+
+            <StackLayout Padding="5" VerticalOptions="Center">
+                <Label Text="Понравившиеся работы:" FontSize="Large" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>
+                <!--<Label Text="Избрано 2 работы" FontSize="Medium"  HorizontalOptions="Center" FontAttributes="Italic"/>-->
+            </StackLayout>
+            <Button Text="Обновить данные" Clicked="Button_Clicked"/>
             <ListView x:Name="catList" ItemsSource="{Binding Categories}"
                         ItemSelected="OnListViewFanficSelected"
                   HasUnevenRows="True">

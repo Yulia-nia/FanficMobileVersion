@@ -5,14 +5,56 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="FanficMobileVersion.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
-    <ContentPage.Content>
-        <StackLayout Margin="20" Orientation="Vertical" VerticalOptions="CenterAndExpand">
-            <!-- Place new controls here -->
-            <Entry x:Name="MyUserName" Placeholder="UserName" Keyboard="Text"/>
-            <Entry x:Name="MyUserPassword" Placeholder="Password" IsPassword="True"/>
-            <Button Text="Login" Clicked="Button_Clicked" BackgroundColor="Black" TextColor="White" Margin="30"/>
-            <Button Text="Registration" Clicked="Button_Clicked_1" BackgroundColor="Black" TextColor="White" Margin="30"/>
-        </StackLayout>
-    </ContentPage.Content>
+             Shell.NavBarIsVisible="False"
+             Title="Fanfic">
+
+        <ScrollView>
+        <StackLayout Orientation="Vertical" VerticalOptions="CenterAndExpand">
+            <Grid Padding="20,40,20,20" ColumnSpacing="10" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackLayout Spacing="30" Grid.ColumnSpan="2">
+                    <Label HorizontalTextAlignment="Center"
+                HorizontalOptions="FillAndExpand"
+                LineBreakMode="WordWrap"
+                FontSize="Large"
+                Text="Вход"/>
+                </StackLayout>
+
+                <StackLayout Spacing="30" Grid.Row="1"  Grid.Column="0" Grid.ColumnSpan="2">
+                    <Entry x:Name="MyUserName"  Placeholder="UserName" Keyboard="Text"/>
+                </StackLayout>
+
+                <StackLayout Spacing="30" Grid.Row="2"  Grid.Column="0" Grid.ColumnSpan="2">
+                    <Entry x:Name="MyUserPassword" Placeholder="Password" IsPassword="True"/>
+                </StackLayout>
+
+                <StackLayout  Spacing="30" Grid.Row="3"  Grid.Column="0" Grid.ColumnSpan="2">
+                    <Button Text="Войти" Clicked="Button_Clicked" HorizontalOptions="FillAndExpand" TextColor="White"  Margin="30"/>
+                </StackLayout>
+
+             
+            </Grid>
+            <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center"  Padding="5" >
+                <Label Text="У вас нет аккаунта?" FontSize="Small"  HorizontalOptions="Center" VerticalOptions="Center"/>
+                <Button Text="Создать аккаунт" Clicked="Button_Clicked_1" TextColor="White"   HorizontalOptions="Center" VerticalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+
+       
+    </ScrollView>
+
+
+  
+   
 </ContentPage>

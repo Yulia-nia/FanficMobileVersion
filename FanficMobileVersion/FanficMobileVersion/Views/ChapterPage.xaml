@@ -1,16 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FanficMobileVersion.Views.ChapterPage">
-    <ContentPage.Content>
-       
+             x:Class="FanficMobileVersion.Views.ChapterPage"
+             Title="{Binding Path=name}">
+    <ContentPage.Content>       
         <StackLayout>
+            <Button Text="Вернуться к содержанию" Clicked="Back" />
 
-            <Button Text="Назад" Clicked="Back" />
-
-            <Label Text="{Binding Path=name}"/>
-            <Label Text="{Binding Path=createdAt}"/>
-            <Label Text="{Binding Path=text}"/>
+            <StackLayout Padding="5" VerticalOptions="Center">
+                <Label Text="{Binding Path=name}" FontSize="Large" HorizontalOptions="Center" FontAttributes="Bold" TextColor="Black"/>                
+            </StackLayout>
+            
+            <ScrollView>
+                <StackLayout Padding="5">
+                    <Label Text="{Binding Path=text}" FontSize="Medium"/>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

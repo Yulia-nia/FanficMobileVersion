@@ -4,47 +4,56 @@
              x:Class="FanficMobileVersion.Views.PopularPage">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Update" Clicked="Button_Clicked"/>
-            <ListView x:Name="catList" ItemsSource="{Binding Categories}"
+            
+            
+            <StackLayout Padding="5" HorizontalOptions="Center">
+                <Label Text="Популярные фанфики" HorizontalOptions="Center" FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                <Label Text="Работы с наибольшим количеством лайков" FontSize="Medium" FontAttributes="Italic"/>
+            </StackLayout>
+            
+            
+            <Button Text="Обновить данные" Clicked="Button_Clicked"/>
+            
+            
+            <ScrollView>
+                <ListView x:Name="catList" ItemsSource="{Binding Categories}"
                         ItemSelected="OnListViewFanficSelected"
                   HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Padding="15">
+                                        <Label Text="{Binding Path=info.name}" FontSize="Large" TextColor="Blue"/>
+                                        <Label  x:Name="nameEntry" LineBreakMode="WordWrap">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Размер: " FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                                                    <Span Text="{Binding info.countChapters}" FontSize="Medium" TextColor="Black">
+                                                    </Span>
+                                                    <Span Text=" главы"  FontSize="Medium" TextColor="Black"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <ViewCell.View>
-                                <StackLayout >
-                                    <Label Text="{Binding Path=info.name}" FontSize="Large" TextColor="Blue"/>
+                                        <Label LineBreakMode="WordWrap">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Понравилось: " FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                                                    <Span Text="{Binding info.countLikes}" FontSize="Medium" TextColor="Black"/>
+                                                    <Span Text=" пользователям"  FontSize="Medium" TextColor="Black"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
 
-
-                                    <Label  x:Name="nameEntry" LineBreakMode="WordWrap">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Размер: " FontAttributes="Bold" FontSize="Medium"/>
-                                                <Span Text="{Binding info.countChapters}" FontSize="Medium" >
-                                                </Span>
-                                                <Span Text=" главы"  FontSize="Medium"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-
-                                    <Label LineBreakMode="WordWrap">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="Понравилось: " FontAttributes="Bold" FontSize="Medium"/>
-                                                <Span Text="{Binding info.countLikes}" FontSize="Medium" />
-                                                <Span Text=" пользователям"  FontSize="Medium"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-
-                                    <Label Text="{Binding info.createdAt}" FontSize="Small" TextColor="Blue"/>
-                                </StackLayout>
-                            </ViewCell.View>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                        <Label Text="{Binding info.createdAt}" FontSize="Small" />
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
             <StackLayout IsVisible="{Binding IsBusy}"
                     HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Padding="20">
                 <Label Text="Загрузка данных..." TextColor="Gray" HorizontalOptions="Center" />

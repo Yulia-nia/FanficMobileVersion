@@ -5,18 +5,15 @@
              x:Class="FanficMobileVersion.Views.CategoriesListViewPage">
     <StackLayout>
         <ListView x:Name="catList" ItemsSource="{Binding Categories}"  
-                  ItemSelected="OnListViewItemSelected"           
-                  
-             HasUnevenRows="True">
+                  ItemSelected="OnListViewItemSelected" 
+                    HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout >
-                            <Label Text="{Binding name}" FontSize="Large" TextColor="Blue"
-                                   
-                                   />
-                            <Label Text="{Binding description}" FontSize="Medium"/>
-                            <Label LineBreakMode="WordWrap">
+                        <StackLayout Padding="15">
+                            <Label Text="{Binding name}" FontSize="Large" TextColor="Blue"/>
+                            <Label Text="{Binding description}" FontSize="Medium"/>                            
+                            <Label LineBreakMode="WordWrap" TextColor="Black">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="Размер: " FontAttributes="Bold" FontSize="Medium"/>

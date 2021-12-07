@@ -23,7 +23,7 @@ namespace FanficMobileVersion.Views
         {
             if (MyUserName.Text == null || MyUserPassword.Text == null || MyUserEmail.Text == null)
             {
-                await DisplayAlert("Error", "Login or password is null", "Ok");
+                await DisplayAlert("Ошибка", "Заполните поля", "Ок");
             }
             else
             {
@@ -35,11 +35,11 @@ namespace FanficMobileVersion.Views
                     //await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");  //Navigation.PushAsync(new AboutPage());
 
                 }
-                else
-                {
-                    await DisplayAlert("Error", "Invalid Login, try again", "Ok");
+                //else
+                //{
+                //    await DisplayAlert("Error", "Invalid Login, try again", "Ok");
 
-                }
+                //}
             }
 
         }

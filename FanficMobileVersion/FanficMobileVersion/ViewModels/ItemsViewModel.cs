@@ -73,7 +73,7 @@ namespace FanficMobileVersion.ViewModels
 
         private async void OnAddItem(object obj)
         {
-            await Shell.Current.GoToAsync(nameof(NewItemPage));
+            //await Shell.Current.GoToAsync(nameof(NewItemPage));
         }
 
         async void OnItemSelected(Item item)
@@ -82,7 +82,7 @@ namespace FanficMobileVersion.ViewModels
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
+           // await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
